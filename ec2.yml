@@ -1,0 +1,15 @@
+---
+
+ - hosts: localhost
+   tasks: 
+     - name: Create EC2 Instance
+       ec2:
+           key_name: tomcat_w 
+           instance_type: t2.micro
+           image: ami-09d8b5222f2b93bf0
+           wait: yes
+           group: default 
+           count: 1 
+           vpc_subnet_id: subnet-0f3ad0177bf081573 
+           assign_public_ip: yes
+           region: us-east-1
