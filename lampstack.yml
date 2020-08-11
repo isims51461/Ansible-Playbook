@@ -74,13 +74,15 @@
                remote_src: yes
                owner: apache
                group: apache
-          - name: Copy wordpress file to /var/www/html
-            copy:
-               src: /opt/wordpress/
-               dest: /var/www/html
-               owner: apache
-               group: apache
-               remote_src: yes
+ #          - name: Copy wordpress file to /var/www/html
+ #           copy:
+ #              src: /opt/wordpress/
+ #              dest: /var/www/html
+ #              owner: apache
+ #             group: apache
+ #              remote_src: yes
+          - name: Copy files from wordpress to /var/www/html
+            shell: cp -r /opt/wordpress/* /var/www/html
             notify: 
                - restart apache
           - name: Configure database connection
