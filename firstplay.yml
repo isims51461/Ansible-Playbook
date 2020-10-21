@@ -6,8 +6,8 @@
 
            - name: Create a User
              user: 
-                 name: u7092020
-                 comment: Carlos Monte
+                 name: user123
+                 comment: name
            - name: Create file on target
              file:
                 path: /tmp/ansiblefile
