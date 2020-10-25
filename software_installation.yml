@@ -1,0 +1,36 @@
+---
+
+
+- hosts: localhost
+  tasks:
+    - name: Software Installation
+      yum:
+        name:
+          - httpd
+          - docker
+          - git
+        state: present
+    - name: Upgrade All Packages
+      yum:
+        name: '*'
+        state: latest
+    - name: Upgrade all packages, excluding kernel & foo related packages
+      yum:
+        name: '*'
+        state: latest
+        exclude: kernel*,foo*
+
+    # - name: Remove Software Packages
+    #   yum:
+         #name:
+         # - httpd
+         # - docker
+         # - git
+         #state: absent
+- name: Install a list of packages with a list variable
+  yum:
+    name: "{{ packages }}"
+  vars:
+    packages:
+    - httpd
+    - httpd-tools
